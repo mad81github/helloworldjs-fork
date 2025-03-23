@@ -35,7 +35,7 @@ jobs:
         id: cache
         with:
           path: |
-            node_modules
+            ${{inputs.base_path}}/node_modules
             ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
