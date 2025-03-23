@@ -7,7 +7,22 @@ on:
       - staging
 
 jobs:
-  
+  detect-environment:
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.set-env.outputs.environment }}
+    steps:    
+
+      - name: Determine Environment
+        id: set-env
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            echo "environment=production" > $GITHUB_OUTPUT
+          else
+            echo "environment=staging" >> $GITHUB_OUTPUT
+          fi                
+
+          
   build:
     runs-on: ubuntu-latest    
     outputs:
@@ -54,10 +69,6 @@ jobs:
           name: ${{ steps.app-info.outputs.artifact_name }}
           path: build/
 
-  detect-environment:
-    uses: ./.github/workflows/detectEnvWF.yml
-    with:
-      branch: ${{github.ref}}
 
 
 
