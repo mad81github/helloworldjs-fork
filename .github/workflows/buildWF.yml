@@ -6,6 +6,7 @@ on:
       base_path:
         type: string
         description: base_path
+        default: '.'
     outputs:
       artifact_name: 
         description: artifact name
