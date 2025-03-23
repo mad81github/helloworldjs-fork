@@ -57,7 +57,7 @@ jobs:
   detect-environment:
     uses: ./.github/workflows/detectEnvWF.yml
     with:
-      branch: ${{github.ref}}
+      branch: ${{github.ref}}    
 
 
 
