@@ -64,7 +64,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: [detect-environment,build]
-    environment: ${{ needs.detect-environment.outputs.environment }}  # Usamos el entorno calculado en detect-environment            
+    environment: ${{ needs.detect-environment.outputs.environment || 'default' }}  # Usamos el entorno calculado en detect-environment            
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
