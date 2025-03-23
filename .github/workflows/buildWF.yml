@@ -62,4 +62,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.app-info.outputs.artifact_name }}
-          path: build/
+          path: ${{inputs.base_path}}/build/

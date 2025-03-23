@@ -12,6 +12,8 @@ jobs:
   
   build:
     uses: ./.github/workflows/buildWF.yml
+    with:
+      base_path: "."
 
   deploy:
    needs: [build,detect-environment]
