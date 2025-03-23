@@ -2,6 +2,10 @@ name: Build App
 
 on:
   workflow_call: 
+    inputs:
+      base_path:
+        type: string
+        description: base_path
     outputs:
       artifact_name: 
         description: artifact name
@@ -11,7 +15,10 @@ jobs:
 
           
   task1:
-    runs-on: ubuntu-latest    
+    runs-on: ubuntu-latest        
+    defaults:
+      run:
+        working-directory: ${{inputs.base_path}}
     outputs:
       artifact_name: ${{ steps.app-info.outputs.artifact_name }}
     steps:
