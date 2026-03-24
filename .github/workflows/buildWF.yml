@@ -28,10 +28,12 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
 
       - name: Cache Node.js dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         id: cache
         with:
           path: |
@@ -43,7 +45,7 @@ jobs:
 
       - name: Install Dependencies
         if:  ${{steps.cache.outputs.cache-hit != 'true'}}
-        run: npm install
+        run: npm ci
 
       - name: obtain App Name Version for artifact
         id: app-info
